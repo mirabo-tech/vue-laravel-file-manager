@@ -85,7 +85,7 @@ export default {
         return {
           windowsConfig: 2,
           lang: 'en',
-          pickerMode: false
+          pickerMode: false,
         };
       },
     },
@@ -146,7 +146,7 @@ export default {
   watch: {
     selectedItems: {
       handler(value) {
-        $emit('change', value)
+        this.$emit('change', value);
       },
     },
   },

@@ -85,7 +85,7 @@ export default {
         return {
           windowsConfig: 2,
           lang: 'en',
-          pickerMode: true
+          pickerMode: false
         };
       },
     },

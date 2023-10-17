@@ -19,6 +19,9 @@ export default {
     if (Object.prototype.hasOwnProperty.call(data, 'windowsConfig')) {
       state.windowsConfig = data.windowsConfig;
     }
+    if (Object.prototype.hasOwnProperty.call(data, 'windowsConfig')) {
+      state.pickerMode = data.pickerMode;
+    }
     // language
     if (Object.prototype.hasOwnProperty.call(data, 'lang')) {
       state.lang = data.lang;

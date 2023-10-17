@@ -28,6 +28,9 @@ module.exports = {
       },
     ],
     'max-len': 'off',
+    'arrow-parens': 'off',
+    "comma-dangle": 'off',
+    "operator-linebreak": 'off',
     'vue/no-use-v-if-with-v-for': [
       'error', {
         'allowUsingIterationVar': true,

@@ -21,7 +21,7 @@
                         <i class="fas fa-sync-alt"/>
                     </button>
                 </div>
-                <div class="btn-group" role="group">
+                <div v-if="!pickerMode" class="btn-group" role="group">
                     <button type="button" class="btn btn-secondary"
                             v-on:click="showModal('NewFile')"
                             v-bind:title="lang.btn.file">
@@ -51,7 +51,7 @@
                         <i class="fas fa-trash-alt"/>
                     </button>
                 </div>
-                <div class="btn-group" role="group">
+                <div v-if="!pickerMode" class="btn-group" role="group">
                     <button type="button" class="btn btn-secondary"
                             v-bind:disabled="!isAnyItemSelected"
                             v-bind:title="lang.btn.copy"
@@ -115,12 +115,17 @@
 </template>
 
 <script>
+/* eslint-disable import/no-duplicates, no-param-reassign */
+import { mapState } from 'vuex';
 import translate from '../../mixins/translate';
 import EventBus from '../../eventBus';
 
 export default {
   mixins: [translate],
   computed: {
+    ...mapState('fm', {
+      pickerMode: state => state.settings.pickerMode,
+    }),
     /**
      * Active manager name
      * @returns {default.computed.activeManager|(function())|string|activeManager}

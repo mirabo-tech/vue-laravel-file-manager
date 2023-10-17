@@ -3,7 +3,7 @@
     class="fm d-flex flex-column"
     v-bind:class="{ 'fm-full-screen': fullScreen }"
   >
-    <navbar v-if="!pickerMode" />
+    <navbar />
     <div class="fm-body">
       <notification />
       <context-menu />
@@ -85,7 +85,7 @@ export default {
         return {
           windowsConfig: 2,
           lang: 'en',
-          pickerMode: false,
+          pickerMode: true,
         };
       },
     },

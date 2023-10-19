@@ -19,6 +19,7 @@ import fr from '../../lang/fr';
 import pt_BR from '../../lang/pt_BR';
 import zh_TW from '../../lang/zh_TW';
 import pl from '../../lang/pl';
+import jp from '../../lang/jp';
 
 export default {
   namespaced: true,
@@ -65,6 +66,7 @@ export default {
         'pt-BR': Object.freeze(pt_BR),
         'zh-TW': Object.freeze(zh_TW),
         pl: Object.freeze(pl),
+        jp: Object.freeze(jp),
       },
 
       // show or hide hidden files

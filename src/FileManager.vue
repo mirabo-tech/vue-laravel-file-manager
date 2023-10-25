@@ -3,17 +3,31 @@
     class="fm d-flex flex-column"
     v-bind:class="{ 'fm-full-screen': fullScreen }"
   >
+    <div
+      v-if="loadingSpinner"
+      class="loading-spinner"
+    >
+      <span>
+        <i class="fas fa-spinner fa-spin fa-4x text-muted" />
+      </span>
+    </div>
     <navbar />
     <div class="fm-body">
       <notification />
       <context-menu />
       <modal v-if="showModal" />
       <template v-if="windowsConfig === 1">
-        <left-manager class="col" manager="left" />
+        <left-manager
+          class="col"
+          manager="left"
+        />
       </template>
       <template v-else-if="windowsConfig === 2">
         <folder-tree class="col-4 col-md-3" />
-        <left-manager class="col-8 col-md-9" manager="left" />
+        <left-manager
+          class="col-8 col-md-9"
+          manager="left"
+        />
       </template>
       <template v-else-if="windowsConfig === 3">
         <left-manager
@@ -135,13 +149,16 @@ export default {
   },
   computed: {
     ...mapState('fm', {
-      windowsConfig: state => state.settings.windowsConfig,
-      pickerMode: state => state.settings.pickerMode,
-      activeManager: state => state.settings.activeManager,
-      showModal: state => state.modal.showModal,
-      fullScreen: state => state.settings.fullScreen,
+      windowsConfig: (state) => state.settings.windowsConfig,
+      pickerMode: (state) => state.settings.pickerMode,
+      activeManager: (state) => state.settings.activeManager,
+      showModal: (state) => state.modal.showModal,
+      fullScreen: (state) => state.settings.fullScreen,
     }),
     ...mapGetters('fm', ['selectedItems']),
+    loadingSpinner() {
+      return this.$store.state.fm.messages.loading;
+    },
   },
   watch: {
     selectedItems: {
@@ -156,7 +173,7 @@ export default {
      */
     requestInterceptor() {
       this.interceptorIndex.request = HTTP.interceptors.request.use(
-        config => {
+        (config) => {
           // overwrite base url and headers
           config.baseURL = this.$store.getters['fm/settings/baseUrl'];
           config.headers = this.$store.getters['fm/settings/headers'];
@@ -166,7 +183,7 @@ export default {
 
           return config;
         },
-        error => {
+        (error) => {
           // loading spinner -
           this.$store.commit('fm/messages/subtractLoading');
           return Promise.reject(error);
@@ -179,7 +196,7 @@ export default {
      */
     responseInterceptor() {
       this.interceptorIndex.response = HTTP.interceptors.response.use(
-        response => {
+        (response) => {
           // loading spinner -
           this.$store.commit('fm/messages/subtractLoading');
 
@@ -206,7 +223,7 @@ export default {
 
           return response;
         },
-        error => {
+        (error) => {
           // loading spinner -
           this.$store.commit('fm/messages/subtractLoading');
 
@@ -291,7 +308,16 @@ export default {
   &:fullscreen {
     background-color: white;
   }
-
+  .loading-spinner {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.05);
+    z-index: 100;
+  }
   .fm-body {
     display: flex;
     height: 100%;

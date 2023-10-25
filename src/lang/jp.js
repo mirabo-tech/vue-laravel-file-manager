@@ -71,7 +71,7 @@ const jp = {
     about: {
       developer: '開発者',
       name: 'Laravel ファイルマネージャー',
-      title: 'About',
+      title: '概要情報',
       version: 'バージョン',
     },
     delete: {

@@ -34,6 +34,7 @@
           </button>
         </div>
         <div
+          v-if="!pickerMode"
           class="btn-group"
           role="group"
         >
@@ -82,6 +83,7 @@
           </button>
         </div>
         <div
+          v-if="!pickerMode"
           class="btn-group"
           role="group"
         >

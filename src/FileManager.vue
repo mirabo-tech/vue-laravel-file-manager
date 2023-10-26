@@ -54,7 +54,7 @@
         />
       </template>
     </div>
-    <info-block v-if="!pickerMode" />
+    <info-block />
   </div>
 </template>
 

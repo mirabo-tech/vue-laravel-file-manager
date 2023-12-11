@@ -35,6 +35,7 @@ module.exports = {
       'error', {
         'allowUsingIterationVar': true,
       }],
+    'semi': 'off'
   },
   parserOptions: {
     parser: 'babel-eslint',

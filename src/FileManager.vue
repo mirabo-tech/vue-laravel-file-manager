@@ -61,6 +61,7 @@
 <script>
 /* eslint-disable import/no-duplicates, no-param-reassign */
 import { mapGetters, mapState } from 'vuex';
+import Cookies from 'js-cookie';
 // Axios
 import HTTP from './http/axios';
 import EventBus from './eventBus';
@@ -97,6 +98,10 @@ export default {
       type: Object,
       default() {
         return {
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            session: Cookies.get('sid'),
+          },
           windowsConfig: 2,
           lang: 'en',
           pickerMode: true,
